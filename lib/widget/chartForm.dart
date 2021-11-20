@@ -27,31 +27,52 @@ class ChartForm extends StatelessWidget {
               ),
             ),
           ),
-          TextField(
-            decoration: InputDecoration(
-              labelText: "Title",
-            ),
-            controller: titleController,
-          ),
-          TextField(
-            decoration: InputDecoration(
-              labelText: 'Amount',
-            ),
-            controller: amountController,
-          ),
-          ElevatedButton(
-            onPressed: () {
-              print(titleController.text);
-              print(amountController.text);
-            },
-            child: Container(
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const Text("Add"),
-                  const Icon(Icons.add),
-                ],
-              ),
+          Container(
+            margin: EdgeInsets.only(right: 20, left: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                SizedBox(
+                  height: 10,
+                ),
+                TextField(
+                  decoration: InputDecoration(
+                    labelText: "Title",
+                    border: OutlineInputBorder(),
+                  ),
+                  controller: titleController,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                TextField(
+                  decoration: InputDecoration(
+                    labelText: 'Amount',
+                    border: OutlineInputBorder(),
+                  ),
+                  controller: amountController,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    print(titleController.text);
+                    print(amountController.text);
+                  },
+                  style: ElevatedButton.styleFrom(),
+                  child: Container(
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text("Add"),
+                        const Icon(Icons.add),
+                      ],
+                    ),
+                  ),
+                )
+              ],
             ),
           )
         ],
