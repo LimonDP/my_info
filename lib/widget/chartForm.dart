@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:my_info/statemanagement/notifier.dart';
+import 'package:provider/provider.dart';
 
 class ChartForm extends StatelessWidget {
   //const ChartForm({Key? key}) : super(key: key);
   final titleController = TextEditingController();
   final amountController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
+    final getProvider = Provider.of<TranscationNotifier>(context);
     return Container(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
@@ -42,7 +46,7 @@ class ChartForm extends StatelessWidget {
                   ),
                   controller: titleController,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 TextField(
@@ -51,14 +55,17 @@ class ChartForm extends StatelessWidget {
                     border: OutlineInputBorder(),
                   ),
                   controller: amountController,
+                  keyboardType: TextInputType.number,
                 ),
                 SizedBox(
                   height: 10,
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    print(titleController.text);
-                    print(amountController.text);
+                    // print(titleController.text);
+                    // print(amountController.text);
+                    getProvider.addTransication(titleController.text,
+                        double.parse(amountController.text));
                   },
                   style: ElevatedButton.styleFrom(),
                   child: Container(

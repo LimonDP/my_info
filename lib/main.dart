@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:my_info/model/transition.dart';
+
+import 'package:my_info/statemanagement/notifier.dart';
 import 'package:my_info/widget/chart.dart';
-import 'package:my_info/widget/chartForm.dart';
-import 'package:my_info/widget/signup.dart';
 
-import 'model/transitionlist.dart';
-import 'widget/list.dart';
+import 'package:provider/provider.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(ChangeNotifierProvider(
+      create: (_) => TranscationNotifier(),
+      child: MyApp(),
+    ));
 
 class MyApp extends StatelessWidget {
   //onst MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final getprovider = Provider.of<TranscationNotifier>(context);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
